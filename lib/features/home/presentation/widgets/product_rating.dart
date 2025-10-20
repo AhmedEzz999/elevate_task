@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class ProductRating extends StatelessWidget {
   const ProductRating({required this.rating, super.key});

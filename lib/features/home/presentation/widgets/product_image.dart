@@ -13,14 +13,12 @@ class ProductImage extends StatelessWidget {
         topRight: Radius.circular(16),
       ),
       child: CachedNetworkImage(
-          imageUrl:
-              imageSource ??
-              'https://via.placeholder.com/150',
-          errorWidget: (context, url, error) {
-            return const Icon(Icons.error, size: 50);
-          },
-          fit: BoxFit.fill,
-        ),
+        imageUrl: imageSource ?? 'https://via.placeholder.com/150',
+        errorWidget: (context, url, error) {
+          return const Icon(Icons.error, size: 50);
+        },
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

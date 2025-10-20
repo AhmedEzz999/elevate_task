@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../features/home/data/models/product_model/product_model.dart';
-import '../utils/app_colors.dart';
+import '../../data/models/product_model/product_model.dart';
+import '../../../../core/utils/app_colors.dart';
 import 'product_image.dart';
 import 'product_price.dart';
 import 'product_rating.dart';
