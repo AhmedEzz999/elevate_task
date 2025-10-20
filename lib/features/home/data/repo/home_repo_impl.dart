@@ -7,13 +7,13 @@ import '../models/product_model/product_model.dart';
 import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  HomeRepoImpl({required this.dio});
-  final Dio dio;
+  HomeRepoImpl({required this.apiService});
+  final ApiService apiService;
 
   @override
   Future<Either<ServiceFailures, List<ProductModel>>> fetchProducts() async {
     try {
-      final data = await ApiService(dio: dio).get(endpoint: 'products');
+      final data = await apiService.get(endpoint: 'products');
       final List<ProductModel> productList = [];
       for (final product in data) {
         productList.add(ProductModel.fromJson(product));

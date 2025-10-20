@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../features/home/data/models/product_model/product_model.dart';
 import '../utils/app_colors.dart';
 import 'product_image.dart';
 import 'product_price.dart';
 import 'product_rating.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({required this.product, super.key});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -17,24 +19,32 @@ class ProductItem extends StatelessWidget {
             border: Border.all(color: AppColors.borderColor, width: 2),
             borderRadius: BorderRadius.circular(16),
           ),
-          child: const Column(
+          child: Column(
             children: [
-              Expanded(child: ProductImage()),
+              Expanded(child: ProductImage(imageSource: product.image)),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 6),
+                  padding: const EdgeInsets.only(left: 6),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Nike Air Jordon Nike shoes flexible Nike Air Jordon Nike shoes flexible',
-                        maxLines: 2,
+                        product.title ?? '',
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: AppColors.primaryColor),
+                        style: const TextStyle(color: AppColors.primaryColor),
                       ),
-                      SizedBox(height: 8),
-                      ProductPrice(),
-                      ProductRating(),
+                      const SizedBox(height: 6),
+                      Text(
+                        product.description ?? '',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: AppColors.primaryColor),
+                      ),
+                      const SizedBox(height: 6),
+                      ProductPrice(productPrice: product.price ?? 0),
+                      ProductRating(rating: product.rating?.rate ?? 0),
                     ],
                   ),
                 ),

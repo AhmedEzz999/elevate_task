@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'core/utils/dependency_injection.dart';
 import 'features/home/presentation/views/home_view.dart';
 
 void main() {
+  setupDependencyInjection();
   runApp(const MyApp());
 }
 

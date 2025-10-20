@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {
-  const ProductImage({super.key});
+  const ProductImage({required this.imageSource, super.key});
+  final String? imageSource;
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +13,14 @@ class ProductImage extends StatelessWidget {
         topRight: Radius.circular(16),
       ),
       child: CachedNetworkImage(
-        width: double.infinity,
-        imageUrl:
-            'https://snworksceo.imgix.net/ttd/dd98cc9a-86ba-4ff5-8395-3084026f7efd.sized-1000x1000.jpg?w=1000&dpr=2',
-        fit: BoxFit.fill,
-      ),
+          imageUrl:
+              imageSource ??
+              'https://via.placeholder.com/150',
+          errorWidget: (context, url, error) {
+            return const Icon(Icons.error, size: 50);
+          },
+          fit: BoxFit.fill,
+        ),
     );
   }
 }

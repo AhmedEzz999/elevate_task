@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
 class ProductPrice extends StatelessWidget {
-  const ProductPrice({super.key});
+  const ProductPrice({required this.productPrice, super.key});
+  final num productPrice;
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Text('EGP 1200', style: TextStyle(color: AppColors.primaryColor)),
-        SizedBox(width: 6),
         Text(
-          '1500 EGP',
-          style: TextStyle(
+          '$productPrice',
+          style: const TextStyle(color: AppColors.primaryColor),
+        ),
+        const SizedBox(width: 6),
+        Text(
+          '${(productPrice * 1.25).toInt()}', // API doesn't return price before discount
+          style: const TextStyle(
             decoration: TextDecoration.lineThrough,
             decorationColor: AppColors.secondaryColor,
             color: AppColors.secondaryColor,

@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 
 class ProductRating extends StatelessWidget {
-  const ProductRating({super.key});
+  const ProductRating({required this.rating, super.key});
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Row(
+        Row(
           children: [
-            Text('Review (4.8)'),
-            SizedBox(width: 6),
-            Icon(
+            Text('Review ($rating)'),
+            const SizedBox(width: 6),
+            const Icon(
               Icons.star_rate,
               color: Color(0xFFFFD800),
               size: 28,
@@ -23,7 +24,7 @@ class ProductRating extends StatelessWidget {
           ],
         ),
         IconButton(
-          padding: const EdgeInsets.all(1.5),
+          padding: const EdgeInsets.all(1),
           constraints: const BoxConstraints(),
           style: IconButton.styleFrom(backgroundColor: AppColors.iconColor),
           onPressed: () {},
